@@ -18,10 +18,17 @@
   --clr-light-grayish-cyan: hsl(185, 41%, 84%);
   --clr-light-cyan: hsl(189, 41%, 97%);
   --clr-white: hsl(0, 0%, 100%);
+  --bg-btn-hover: hsl(173, 61%, 77%);
+}
+
+body,
+input,
+textarea,
+button {
+  font-family: 'Space Mono', monospace;
 }
 
 body {
-  font-family: 'Space Mono', monospace;
   background-color: var(--clr-light-grayish-cyan);
   display: flex;
   flex-direction: column;
@@ -38,17 +45,82 @@ main {
   background-color: rgb(255, 255, 255);
   box-shadow: 0px 32px 43px rgba(79, 166, 175, 0.200735);
   border-radius: 25px;
+  padding: 2rem 3rem 2rem 2rem;
+  display: flex;
+  justify-content: space-between;
 }
 
 /**** INPUT ****/
-
+.container-input {
+  width: 50%;
+}
 /**** OUTPUT ****/
+
+.container-output {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 50%;
+  background-color: var(--clr-very-dark-cyan);
+  border-radius: 15px;
+  padding: 2.5rem 2.5rem 2.5rem 2.5rem;
+}
+
+.container-output div:nth-child(2) {
+  margin-bottom: 7.6rem;
+}
 
 .output-user {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .content-output-user {
   display: flex;
   flex-direction: column;
 }
+
+.content-output-user p:nth-child(1) {
+  color: var(--clr-white);
+  line-height: 1.5rem;
+  font-weight: bold;
+}
+
+.content-output-user p:nth-child(2) {
+  color: var(--clr-dark-cyan);
+  font-size: 0.8rem;
+  line-height: 1.18rem;
+  font-weight: bold;
+}
+
+.calcul-output {
+  letter-spacing: -1px;
+  color: var(--clr-strong-cyan);
+  font-size: var(--fs-output);
+  line-height: 71px;
+  font-weight: bold;
+}
+
+.btn-output {
+  width: 100%;
+  text-align: center;
+  padding: 0.5rem 0 0.5rem 0;
+  font-size: 1.25rem;
+  line-height: 1.8rem;
+  font-weight: bold;
+  color: var(--clr-very-dark-cyan);
+  background-color: hsl(183, 78%, 24%);
+  border-radius: 5px;
+  border: none;
+  text-transform: uppercase;
+}
+
+/* .btn-output-active {
+  background-color: var(--clr-strong-cyan);
+  cursor: pointer;
+}
+
+.btn-output-active:hover {
+  background-color: var(--bg-btn-hover);
+} */
