@@ -135,16 +135,17 @@ button {
   border: 2px solid var(--clr-strong-cyan);
 }
 
-.input-percent:focus::placeholder {
-  color: transparent;
-}
-
 .percent-tip input:focus {
+  padding-right: 1rem;
   text-align: right;
   outline: none;
   border: 2px solid var(--clr-strong-cyan);
   color: var(--clr-very-dark-cyan);
   background-color: var(--clr-light-cyan);
+}
+
+.input-percent:focus::placeholder {
+  color: transparent;
 }
 
 .number-people input {
