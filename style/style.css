@@ -35,8 +35,7 @@ header {
 main {
   width: 920px;
   min-height: 481px;
-  padding-left: 48px;
-  padding-top: 45px;
+  padding: 2rem 3rem 2rem 2rem;
   background-color: rgb(255, 255, 255);
   box-shadow: 0px 32px 43px rgba(79, 166, 175, 0.200735);
   border-radius: 25px;
@@ -63,7 +62,7 @@ button {
 }
 
 .price input {
-  background-image: url(/images/icon-dollar.svg);
+  background-image: url('../images/icon-dollar.svg');
   background-repeat: no-repeat;
   background-position: 1.06rem;
 }
@@ -145,7 +144,7 @@ button {
 }
 
 .number-people input {
-  background-image: url(/images/icon-person.svg);
+  background-image: url('../images/icon-person.svg');
   background-repeat: no-repeat;
   background-position: 1.06rem;
 }
