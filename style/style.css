@@ -136,6 +136,7 @@ button {
 }
 
 .percent-tip input:focus {
+  padding-right: 1rem;
   text-align: right;
   outline: none;
   border: 2px solid var(--clr-strong-cyan);
@@ -154,15 +155,11 @@ button {
 .container-output {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   width: 50%;
   background-color: var(--clr-very-dark-cyan);
   border-radius: 15px;
   padding: 2.5rem 2.5rem 2.5rem 2.5rem;
-}
-
-.container-output div:nth-child(2) {
-  margin-bottom: 7.6rem;
 }
 
 .output-user {
@@ -198,6 +195,7 @@ button {
 }
 
 .btn-output {
+  margin-top: auto;
   width: 100%;
   text-align: center;
   padding: 0.5rem 0 0.5rem 0;
