@@ -22,7 +22,7 @@ function removeError() {
   people.classList.remove('error');
 }
 
-// function who calcul the
+// function who calcul the bill with the percent and the numbers of people
 function calcul() {
   if (people.value >= 1 && bill.value >= 0) {
     removeError();
