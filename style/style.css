@@ -29,17 +29,17 @@ body {
 }
 
 header {
-  margin: 10rem 0 5rem 0;
+  margin: 8rem 0 5rem 0;
 }
 
 main {
-  width: 920px;
+  display: flex;
+  width: 65%;
   min-height: 481px;
-  padding: 2rem 3rem 2rem 2rem;
+  padding: 2rem 2rem 2rem 3rem;
   background-color: rgb(255, 255, 255);
   box-shadow: 0px 32px 43px rgba(79, 166, 175, 0.200735);
   border-radius: 25px;
-  display: flex;
 }
 
 body,
@@ -53,6 +53,7 @@ button {
 
 .container-input {
   width: 50%;
+  margin-right: 3rem;
 }
 
 .container-input p {
@@ -61,14 +62,14 @@ button {
   font-weight: bold;
 }
 
-.price input {
+.price > input {
   background-image: url('../images/icon-dollar.svg');
   background-repeat: no-repeat;
   background-position: 1.06rem;
 }
 
 .input-custom {
-  width: 23.6rem;
+  width: 100%;
   height: 3rem;
   margin-top: 0.375rem;
   padding-right: 1.06rem;
@@ -96,10 +97,12 @@ button {
   margin: 2.5rem 0 2.5rem 0;
 }
 
-.percent-tip > button {
+.percent-tip button,
+.percent-tip input {
   margin-top: 1rem;
   width: 7.3rem;
   height: 3rem;
+  text-align: center;
   border: none;
   border-radius: 5px;
   font-size: var(--fs-input);
@@ -109,32 +112,20 @@ button {
   cursor: pointer;
 }
 
-.percent-tip > button:hover {
+.percent-tip button:hover {
   background-color: var(--bg-btn-hover);
   color: var(--clr-very-dark-cyan);
 }
 
-/* .percent-tip button:focus {
-  background-color: var(--clr-strong-cyan);
-  color: var(--clr-very-dark-cyan);
-} */
-
 .btn-percent.select {
   background-color: var(--clr-strong-cyan);
   color: var(--clr-very-dark-cyan);
+  transition: 0.2s;
 }
 
 .percent-tip input {
-  width: 7.3rem;
-  height: 3rem;
-  font-size: var(--fs-input);
-  font-weight: 700;
-  text-align: center;
-  border: none;
-  border-radius: 5px;
   color: var(--clr-very-dark-cyan);
   background-color: var(--clr-light-cyan);
-  cursor: pointer;
 }
 
 .percent-tip input:hover {
@@ -154,7 +145,7 @@ button {
   background-color: var(--clr-light-cyan);
 }
 
-.number-people input {
+.number-people > input {
   background-image: url('../images/icon-person.svg');
   background-repeat: no-repeat;
   background-position: 1.06rem;
@@ -163,7 +154,6 @@ button {
 .number-people > div {
   display: flex;
   justify-content: space-between;
-  width: 23.6rem;
 }
 
 .people-text.active-error {
@@ -228,6 +218,7 @@ button {
   border-radius: 5px;
   border: none;
   text-transform: uppercase;
+  transition: 0.3s;
 }
 
 .btn-output.active {
@@ -237,4 +228,80 @@ button {
 
 .btn-output.active:hover {
   background-color: var(--bg-btn-hover);
+}
+
+@media all and (min-width: 1440px) {
+  main {
+    width: 60%;
+  }
+}
+
+@media all and (max-width: 1260px) {
+  main {
+    width: 80%;
+  }
+}
+
+@media all and (max-width: 1060px) {
+  :root {
+    --fs-output: 2rem;
+  }
+
+  main {
+    width: 95%;
+  }
+
+  .people-text {
+    margin-left: 1rem;
+  }
+  .container-output {
+    width: 60%;
+  }
+}
+
+/***TEST ***/
+
+body {
+  position: relative;
+  overflow-y: hidden;
+}
+
+/* main {
+  margin-bottom: 16rem;
+} */
+
+.attribution {
+  position: absolute;
+  height: 300px;
+  width: 300px;
+  bottom: -40rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background-color: pink;
+  border: 0px solid;
+  border-radius: 50%;
+  transition: 3s;
+}
+
+.attribution a {
+  text-decoration: none;
+  color: var(--clr-very-dark-cyan);
+}
+
+.attribution > div > div {
+  margin-top: 1rem;
+}
+
+.attribution.effect {
+  bottom: -19rem;
+  transition: 3s;
+}
+
+.contributor {
+  display: flex;
+}
+.contributor > p {
+  margin: 0 0.5rem 0 0.5rem;
 }

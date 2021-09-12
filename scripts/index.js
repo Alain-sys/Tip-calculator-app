@@ -6,7 +6,6 @@ let btnOutput = document.querySelector('.btn-output');
 let outputAmount = document.querySelector('.amount');
 let total = document.querySelector('.total');
 let peopleText = document.querySelector('.people-text');
-
 let percent = 0;
 
 // Add text error when the content of people is empty or 0
@@ -15,6 +14,7 @@ function error() {
   peopleText.textContent = "Can't be zero";
   people.classList.add('error');
 }
+
 // remove text error when the user add content and don't write 0
 function removeError() {
   peopleText.classList.remove('active-error');
@@ -24,7 +24,7 @@ function removeError() {
 
 // function who calcul the bill with the percent and the numbers of people
 function calcul() {
-  if (people.value >= 1 && bill.value >= 0) {
+  if (people.value >= 1 && bill.value >= 0 && percent >= 0) {
     removeError();
     let calculPercent = (bill.value * percent) / 100;
     let calculTotal = bill.value / people.value + calculPercent / people.value;
@@ -35,60 +35,21 @@ function calcul() {
   }
 }
 
+// remove the class "select" to the btnPercent
 function removeClass() {
   btnPercent.forEach((btn) => {
     btn.classList.remove('select');
   });
 }
 
-btnPercent.forEach((btn) => {
-  btn.addEventListener('click', () => {
-    percent = btn.value;
-    removeClass();
-    btn.classList.add('select');
-    calcul();
-  });
-});
-
-// call the function calcul when the user type content in bill
-inputPercent.addEventListener('input', () => {
-  percent = inputPercent.value;
-  btnPercent.forEach((btn) => {
-    btn.classList.remove('select');
-  });
-  calcul();
-});
-
-// call the function calcul when the user click on inputPercent
-inputPercent.addEventListener('click', () => {
-  percent = inputPercent.value;
-  calcul();
-});
-
-// call the function calcul when the user type content in bill
-bill.addEventListener('input', () => {
-  calcul();
-});
-
-// call the function calcul when the user type content in people
-people.addEventListener('input', () => {
-  calcul();
-});
-
-// clear inputForm when btnOutput is clicked by the user
-btnOutput.addEventListener('click', clearInput, false);
-
-// when the content of bill, inputPercent or people is type add the class active to the btnOutput
+// when the content of bill, inputPercent or people is type add the class "active" to the btnOutput else if nothing is type remove the class "active"
 function reset() {
-  if (bill.value.length || inputPercent.value.length || people.value.length != 0) {
+  if (bill.value.length || inputPercent.value.length || people.value.length != '') {
     btnOutput.classList.add('active');
-  } else if (bill.value.length || inputPercent.value.length || people.value.length == '') {
+  } else {
     btnOutput.classList.remove('active');
   }
 }
-inputPercent.addEventListener('input', reset, false);
-bill.addEventListener('input', reset, false);
-people.addEventListener('input', reset, false);
 
 // clear inputForm when the website is refresh
 function clearInput() {
@@ -98,5 +59,61 @@ function clearInput() {
   }
   outputAmount.textContent = '$0.00';
   total.textContent = '$0.00';
+  reset();
 }
 clearInput();
+
+// call the function calcul and remove the class "select" for the previous button and add it to the new when the btnPercent is clicked
+btnPercent.forEach((btn) => {
+  btn.addEventListener('click', () => {
+    percent = btn.value;
+    removeClass();
+    btn.classList.add('select');
+    calcul();
+  });
+});
+
+// call the function calcul when the user click on inputPercent
+inputPercent.addEventListener('click', () => {
+  percent = inputPercent.value;
+  removeClass();
+  calcul();
+});
+
+// call the function calcul then reset and contributorEffect when the user type content in bill
+inputPercent.addEventListener('input', () => {
+  percent = inputPercent.value;
+  calcul();
+  reset();
+  contributorEffect();
+});
+
+// call the function calcul then reset and contributorEffect when the user type content in bill
+bill.addEventListener('input', () => {
+  calcul();
+  reset();
+  contributorEffect();
+});
+
+// call the function calcul then reset and contributorEffect when the user type content in people
+people.addEventListener('input', () => {
+  calcul();
+  reset();
+  contributorEffect();
+});
+
+// call the function clearInput and contributorEffect when btnOutput is clicked
+btnOutput.addEventListener('click', () => {
+  clearInput();
+  contributorEffect();
+});
+
+let contributor = document.querySelector('.attribution');
+
+function contributorEffect() {
+  if (bill.value.length || inputPercent.value.length || people.value.length != '') {
+    contributor.classList.add('effect');
+  } else {
+    contributor.classList.remove('effect');
+  }
+}
