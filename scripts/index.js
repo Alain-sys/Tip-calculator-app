@@ -51,6 +51,7 @@ function reset() {
   } else {
     btnOutput.classList.remove('active');
     contributor.classList.remove('effect');
+    removeClass();
   }
 }
 
@@ -104,6 +105,5 @@ people.addEventListener('input', () => {
 
 // call the function clearInput when btnOutput is clicked
 btnOutput.addEventListener('click', () => {
-  removeClass();
   clearInput();
 });
