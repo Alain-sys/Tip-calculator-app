@@ -6,6 +6,7 @@ let btnOutput = document.querySelector('.btn-output');
 let outputAmount = document.querySelector('.amount');
 let total = document.querySelector('.total');
 let peopleText = document.querySelector('.people-text');
+let contributor = document.querySelector('.attribution');
 let percent = 0;
 
 // Add text error when the content of people is empty or 0
@@ -42,12 +43,14 @@ function removeClass() {
   });
 }
 
-// when the content of bill, inputPercent or people is type add the class "active" to the btnOutput else if nothing is type remove the class "active"
+// when the content of bill, inputPercent or people is type add the class "active" to the btnOutput and "effect" to the contributor else if nothing is type remove the class "active" and "effect"
 function reset() {
   if (bill.value.length || inputPercent.value.length || people.value.length != '') {
     btnOutput.classList.add('active');
+    contributor.classList.add('effect');
   } else {
     btnOutput.classList.remove('active');
+    contributor.classList.remove('effect');
   }
 }
 
@@ -80,40 +83,26 @@ inputPercent.addEventListener('click', () => {
   calcul();
 });
 
-// call the function calcul then reset and contributorEffect when the user type content in bill
+// call the function calcul and reset when the user type content in bill
 inputPercent.addEventListener('input', () => {
   percent = inputPercent.value;
   calcul();
   reset();
-  contributorEffect();
 });
 
-// call the function calcul then reset and contributorEffect when the user type content in bill
+// call the function calcul and reset when the user type content in bill
 bill.addEventListener('input', () => {
   calcul();
   reset();
-  contributorEffect();
 });
 
-// call the function calcul then reset and contributorEffect when the user type content in people
+// call the function calcul and reset when the user type content in people
 people.addEventListener('input', () => {
   calcul();
   reset();
-  contributorEffect();
 });
 
 // call the function clearInput and contributorEffect when btnOutput is clicked
 btnOutput.addEventListener('click', () => {
   clearInput();
-  contributorEffect();
 });
-
-let contributor = document.querySelector('.attribution');
-
-function contributorEffect() {
-  if (bill.value.length || inputPercent.value.length || people.value.length != '') {
-    contributor.classList.add('effect');
-  } else {
-    contributor.classList.remove('effect');
-  }
-}
