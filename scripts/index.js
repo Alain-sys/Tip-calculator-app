@@ -54,7 +54,7 @@ function reset() {
   }
 }
 
-// clear inputForm when the website is refresh
+// clear content of inputForm
 function clearInput() {
   let inputForm = document.getElementsByClassName('refresh');
   for (let a = 0; a < inputForm.length; a++) {
@@ -102,7 +102,8 @@ people.addEventListener('input', () => {
   reset();
 });
 
-// call the function clearInput and contributorEffect when btnOutput is clicked
+// call the function clearInput when btnOutput is clicked
 btnOutput.addEventListener('click', () => {
+  removeClass();
   clearInput();
 });
