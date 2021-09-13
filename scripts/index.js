@@ -43,7 +43,7 @@ function removeClass() {
   });
 }
 
-// when the content of bill, inputPercent or people is type add the class "active" to the btnOutput and "effect" to the contributor else if nothing is type remove the class "active" and "effect"
+// when the content of bill, inputPercent or people is type add the class "active" to the btnOutput and "effect" to the contributor else, if nothing is type remove the class "active" then "effect" and "select"
 function reset() {
   if (bill.value.length || inputPercent.value.length || people.value.length != '') {
     btnOutput.classList.add('active');
