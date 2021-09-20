@@ -25,7 +25,7 @@
       <div class="container-input">
         <div class="price">
           <p>Bill</p>
-          <input class="input-custom bill" type="text" placeholder="0" />
+          <input class="input-custom bill refresh" type="text" placeholder="0" />
         </div>
         <div class="percent-tip">
           <p>Select Tip %</p>
@@ -34,12 +34,14 @@
           <button class="btn-percent" type="button" value="15">15%</button>
           <button class="btn-percent" type="button" value="25">25%</button>
           <button class="btn-percent" type="button" value="50">50%</button>
-          <input class="input-percent" type="text" placeholder="Custom" />
+          <input class="input-percent refresh" type="text" placeholder="Custom" />
         </div>
         <div class="number-people">
-          <p>Number of People</p>
-          <span class="errorNumber"></span>
-          <input class="input-custom people" type="text" placeholder="0" />
+          <div>
+            <p>Number of People</p>
+            <span class="people-text"></span>
+          </div>
+          <input class="input-custom people refresh" type="text" placeholder="0" />
         </div>
       </div>
       <!-- OUTPUT USER -->
@@ -58,13 +60,24 @@
           </div>
           <span class="calcul-output total">$0.00</span>
         </div>
-        <button class="btn-output">Reset</button>
+        <button type="button" class="btn-output">Reset</button>
       </div>
     </main>
-    Bill Select Tip % 5% 10% 15% 25% 50% Custom Number of People Tip Amount / person Total / person Reset
-
     <div class="attribution">
-      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. Coded by <a href="#">Your Name Here</a>.
+      <div>
+        <div>
+          <p>Challenge by</p>
+          <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>
+        </div>
+        <div>
+          <p>Coded by</p>
+          <div class="contributor">
+            <a href="https://github.com/Alain-sys">Alain-sys</a>
+            <p>&</p>
+            <a href="https://github.com/Vcna-0">Vcna-0</a>
+          </div>
+        </div>
+      </div>
     </div>
     <script src="scripts/index.js"></script>
   </body>

@@ -3,115 +3,107 @@ let btnPercent = document.querySelectorAll('.btn-percent');
 let inputPercent = document.querySelector('.input-percent');
 let people = document.querySelector('.people');
 let btnOutput = document.querySelector('.btn-output');
-let allInput = document.querySelectorAll('input');
-let outputAccount = document.querySelector('.amount');
-let outputTotal = document.querySelector('.total');
-let errorNumber= document.querySelector('.errorNumber');
-let tip = "";
+let outputAmount = document.querySelector('.amount');
+let total = document.querySelector('.total');
+let peopleText = document.querySelector('.people-text');
+let contributor = document.querySelector('.attribution');
+let percent = 0;
 
-function calcul() {
-    if((bill.value != "") && (bill.value != 0)){
-        let tipAccount = bill.value;
-        outputAccount.textContent = `$${tipAccount}`;
-        if((inputPercent.value != "") && (inputPercent.value != 0)){
-            tipAccount = bill.value*(tip/100);
-            outputAccount.textContent = `$${tipAccount}`;
-        }
-        if((people.value != "") && (people.value != 0)){
-            tipAccount = bill.value*(tip/100)/people.value;
-            outputAccount.textContent = `$${tipAccount}`;
-        } 
-    }else{
-        outputAccount.textContent = "$0.00";
-    }
+// Add text error when the content of people is empty or 0
+function error() {
+  peopleText.classList.add('active-error');
+  peopleText.textContent = "Can't be zero";
+  people.classList.add('error');
 }
 
-allInput.forEach(function(input) {
-    input.addEventListener("input", () => {
-        tip = inputPercent.value;
-        calcul();
-    })
-});
+// remove text error when the user add content and don't write 0
+function removeError() {
+  peopleText.classList.remove('active-error');
+  peopleText.textContent = '';
+  people.classList.remove('error');
+}
 
-btnPercent.forEach(function(btn) {
-    btn.addEventListener("click", () => {
-        tip = btn.value;
-        calcul();
-    })
-});
+// function who calcul the bill with the percent and the numbers of people
+function calcul() {
+  if (people.value >= 1 && bill.value >= 0 && percent >= 0) {
+    removeError();
+    let calculPercent = (bill.value * percent) / 100;
+    let calculTotal = bill.value / people.value + calculPercent / people.value;
+    outputAmount.textContent = `$${(calculPercent / people.value).toFixed(2)}`;
+    total.textContent = `$${calculTotal.toFixed(2)}`;
+  } else {
+    error();
+  }
+}
 
+// remove the class "select" to the btnPercent
+function removeClass() {
+  btnPercent.forEach((btn) => {
+    btn.classList.remove('select');
+  });
+}
 
+// when the content of bill, inputPercent or people is type add the class "active" to the btnOutput and "effect" to the contributor else, if nothing is type remove the class "active" then "effect" and "select"
 function reset() {
-        allInput.forEach(input => {
-            input.value="";
-        });
-        outputAccount.textContent = "$0.00";
-        btnOutput.style.background = "#0D686D";
-        btnOutput.style.cursor = "auto";
-    }
+  if (bill.value.length || inputPercent.value.length || people.value.length != '') {
+    btnOutput.classList.add('active');
+    contributor.classList.add('effect');
+  } else {
+    btnOutput.classList.remove('active');
+    contributor.classList.remove('effect');
+    removeClass();
+  }
+}
 
-btnOutput.addEventListener("click", reset);
-reset();
+// clear content of inputForm
+function clearInput() {
+  let inputForm = document.getElementsByClassName('refresh');
+  for (let a = 0; a < inputForm.length; a++) {
+    inputForm[a].value = '';
+  }
+  outputAmount.textContent = '$0.00';
+  total.textContent = '$0.00';
+  reset();
+}
+clearInput();
 
+// call the function calcul and remove the class "select" for the previous button and add it to the new when the btnPercent is clicked
+btnPercent.forEach((btn) => {
+  btn.addEventListener('click', () => {
+    percent = btn.value;
+    removeClass();
+    btn.classList.add('select');
+    calcul();
+  });
+});
 
+// call the function calcul when the user click on inputPercent
+inputPercent.addEventListener('click', () => {
+  percent = inputPercent.value;
+  removeClass();
+  calcul();
+});
 
+// call the function calcul and reset when the user type content in bill
+inputPercent.addEventListener('input', () => {
+  percent = inputPercent.value;
+  calcul();
+  reset();
+});
 
+// call the function calcul and reset when the user type content in bill
+bill.addEventListener('input', () => {
+  calcul();
+  reset();
+});
 
+// call the function calcul and reset when the user type content in people
+people.addEventListener('input', () => {
+  calcul();
+  reset();
+});
 
-
-
-
-// function reset() {
-//     allInput.forEach(input => {
-//         input.value="";
-//     });
-//     btnOutput.style.background = "#0D686D";
-//     btnOutput.style.cursor = "auto";
-// }
-
-// btnOutput.addEventListener("click", reset);
-// reset();
-
-// // Check input is empty and change the button-reset color 
-// allInput.forEach(function(input) {
-//     input.addEventListener("input", function() {
-//         if (allInput.value != ""){
-//             btnOutput.style.background = "#26C2AE";
-//             btnOutput.style.cursor = "pointer";
-//         }else{
-//             btnOutput.style.background = "#0D686D";
-//             btnOutput.style.cursor = "auto";
-//         }
-
-//         // show error if 0 people
-//         if((people.value == 0) && (people.value != "")){
-//             errorNumber.textContent="Can't be zero";
-//             errorNumber.style.color="red";
-//             people.style.borderColor="red";
-//         }else{
-//             errorNumber.textContent="";
-//         }
-//     });
-// });
-
-// // Function calcul tip
-// function calcul(e) {
-//     let ValueBtn = e.target.value;
-//     let tipAccount = bill.value * (ValueBtn / 100) / people.value;
-//     let tipAccountFix = tipAccount.toFixed(2);
-//     let total = bill.value / people.value + tipAccount;
- 
-//     outputAccount.textContent = tipAccountFix;
-//     outputTotal.textContent = total;    
-// }
-
-// inputPercent.addEventListener("input", calcul);
-// inputPercent.addEventListener("click", calcul);
-
-// for(let i = 0; i < btnPercent.length; i++){
-//     btnPercent[i].addEventListener("click", calcul)
-// }
-
-
-
-
+// call the function clearInput when btnOutput is clicked
+btnOutput.addEventListener('click', () => {
+  clearInput();
+});
