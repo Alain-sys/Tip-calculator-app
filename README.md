@@ -1,6 +1,6 @@
 # Frontend Mentor - Tip calculator app solution
 
-This is a solution to the [Tip calculator app solution](https://www.frontendmentor.io/challenges/officelite-coming-soon-site-M4DIPNz8g) coded by [Alain-sys](https://github.com/Alain-sys)and [Vcna-0](https://github.com/Vcna-0)!
+This is a solution to the [Tip calculator app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/tip-calculator-app-ugJNGbJUX) coded by [Alain-sys](https://github.com/Alain-sys) and [Vcna-0](https://github.com/Vcna-0)!
 
 ## Table of contents
 
