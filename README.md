@@ -50,7 +50,7 @@ Users should be able to:
 ### Links
 
 - [Live Site URL](https://anvc-17.github.io/Tip-calculator-app/)
-- [Solution URL](https://your-solution-url.com)
+- [Solution URL](https://www.frontendmentor.io/solutions/tip-calculator-app-html-css-js-n_K4Gmfcc)
 
 ## Our process
 
