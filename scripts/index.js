@@ -9,6 +9,19 @@ let peopleText = document.querySelector('.people-text');
 let contributor = document.querySelector('.attribution');
 let percent = 0;
 
+// if the input is not a number remove the last character of it
+function numberOnly() {
+  if (isNaN(bill.value)) {
+    bill.value = bill.value.slice(0, -1);
+  } else if (isNaN(inputPercent.value)) {
+    inputPercent.value = inputPercent.value.slice(0, -1);
+  } else if (isNaN(people.value)) {
+    people.value = people.value.slice(0, -1);
+  } else {
+    calcul();
+  }
+}
+
 // Add text error when the content of people is empty or 0
 function error() {
   peopleText.classList.add('active-error');
@@ -26,13 +39,10 @@ function removeError() {
 // function who calcul the bill with the percent and the numbers of people
 function calcul() {
   if (people.value >= 1 && bill.value >= 0 && percent >= 0) {
-    removeError();
     let calculPercent = (bill.value * percent) / 100;
     let calculTotal = bill.value / people.value + calculPercent / people.value;
     outputAmount.textContent = `$${(calculPercent / people.value).toFixed(2)}`;
     total.textContent = `$${calculTotal.toFixed(2)}`;
-  } else {
-    error();
   }
 }
 
@@ -87,19 +97,27 @@ inputPercent.addEventListener('click', () => {
 // call the function calcul and reset when the user type content in bill
 inputPercent.addEventListener('input', () => {
   percent = inputPercent.value;
+  numberOnly();
   calcul();
   reset();
 });
 
 // call the function calcul and reset when the user type content in bill
 bill.addEventListener('input', () => {
+  numberOnly();
   calcul();
   reset();
 });
 
 // call the function calcul and reset when the user type content in people
 people.addEventListener('input', () => {
-  calcul();
+  if (people.value == '0') {
+    error();
+  } else {
+    removeError();
+    calcul();
+  }
+  numberOnly();
   reset();
 });
 
